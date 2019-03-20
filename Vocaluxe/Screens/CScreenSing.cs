@@ -205,7 +205,7 @@ namespace Vocaluxe.Screens
             if (!keyEvent.KeyPressed)
             {
                 switch (keyEvent.Key)
-                {
+                {                        
                     case Keys.Escape:
                         _TogglePause();
                         if (_Pause)
@@ -243,7 +243,15 @@ namespace Vocaluxe.Screens
                         if (CGame.NumRounds > CGame.RoundNr)
                         {
                             if (keyEvent.ModCtrl)
+                            {
                                 _NextSong();
+                            }
+                        }
+                        if (!keyEvent.ModCtrl)
+                        {
+                            float timeTofirstNote = _TimeToFirstNote;
+                            _CurrentTime += 5;
+                            CSound.SetPosition(_CurrentStream, _CurrentTime);
                         }
                         break;
                     case Keys.W:
